@@ -23,10 +23,10 @@ python madewithml/train.py \
     --dataset-loc "$DATASET_LOC" \
     --train-loop-config "$TRAIN_LOOP_CONFIG" \
     --num-workers 1 \
-    --cpu-per-worker 10 \
+    --cpu-per-worker 1 \
     --gpu-per-worker 1 \
     --num-epochs 10 \
-    --batch-size 256 \
+    --batch-size 32 \
     --results-fp $RESULTS_FILE
 
 # Get and save run ID
@@ -49,5 +49,5 @@ cat $RESULTS_FILE
 
 # Save to S3
 export MODEL_REGISTRY=$(python -c "from madewithml import config; print(config.MODEL_REGISTRY)")
-aws s3 cp $MODEL_REGISTRY s3://madewithml/$GITHUB_USERNAME/mlflow/ --recursive
-aws s3 cp results/ s3://madewithml/$GITHUB_USERNAME/results/ --recursive
+aws s3 cp $MODEL_REGISTRY s3://madewithmlcapmichal/$GITHUB_USERNAME/mlflow/ --recursive # has to change s3 path since it has to point to MY personal s3 bucket
+aws s3 cp results/ s3://madewithmlcapmichal/$GITHUB_USERNAME/results/ --recursive
