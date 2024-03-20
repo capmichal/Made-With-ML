@@ -8,7 +8,7 @@ export DATASET_LOC="https://raw.githubusercontent.com/GokuMohandas/Made-With-ML/
 pytest --dataset-loc=$DATASET_LOC tests/data --verbose --disable-warnings > $RESULTS_FILE
 cat $RESULTS_FILE
 
-# Test code
+# Test code#
 export RESULTS_FILE=results/test_code_results.txt
 python -m pytest tests/code --verbose --disable-warnings > $RESULTS_FILE
 cat $RESULTS_FILE
